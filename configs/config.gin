@@ -1,0 +1,94 @@
+################################################Global Parameters####################################################
+n_classes = 12
+s2s = True
+Model_Location = "Local"
+input_shape =(250,6)
+window_length =250
+sequence_stride =125
+train_users = 21
+test_users = 6
+val_users = 3
+Noisy_samples =250
+raw_data_dir = '/home/data/HAPT_dataset/RawData'  #Thinesh_Local
+exp_id = "exp45"
+#####################################################################################################################
+
+################################################Data_Directory Parameters############################################
+##Thinesh_Local
+#load.tf_data_dir = "/home/RUS_CIP/st176497/dl-lab-22w-team04/Human_Activity_Recognition/HAPT_Dataset_tf_records_s2l" #Thinesh_Local
+load.tf_data_dir = "/home/RUS_CIP/st176497/dl-lab-22w-team04/Human_Activity_Recognition/HAPT_Dataset_tf_records_s2s" #Thinesh_Local
+load.raw_data_dir = %raw_data_dir
+##Google_colab
+#load.tf_data_dir = /content/drive/MyDrive/HAPTDataSet/HAPT_Dataset_tf_records_s2l" #Google_colab
+#load.tf_data_dir = /content/drive/MyDrive/HAPTDataSet/HAPT_Dataset_tf_records_s2s" #Google_colab
+#load.raw_data_dir = '/content/drive/MyDrive/HAPTDataSet/RawData' #Google_colab
+
+################################################Raw Data Parameters##################################################
+load.train_users = %train_users
+load.test_users = %test_users
+load.val_users = %val_users
+load.Noisy_samples =%Noisy_samples
+
+################################################Dataset Parameters##################################################
+create_dataset.window_length =%window_length
+create_dataset.sequence_stride =%sequence_stride
+create_dataset.batch_size =32
+create_dataset.s2s =%s2s
+prepare.caching = False
+label_processing.n_classes = %n_classes
+
+################################################Model Parameters###################################################
+#Single_Layer LSTM Model
+build_LSTM_model.input_shape = %input_shape
+build_LSTM_model.num_classes = %n_classes
+build_LSTM_model.LSTM_units = 128
+build_LSTM_model.Dense_units = 128
+build_LSTM_model.s2s = %s2s
+build_LSTM_model.dropout_rate = 0.7
+
+#Single_Layer GRU Model
+build_GRU_model.input_shape = %input_shape
+build_GRU_model.num_classes = %n_classes
+build_GRU_model.GRU_units = 128
+build_GRU_model.Dense_units = 64
+build_GRU_model.s2s = %s2s
+build_GRU_model.dropout_rate = 0.5
+
+#Conv_LSTM Model
+build_conv_LSTM_model.input_shape = %input_shape
+build_conv_LSTM_model.num_classes = %n_classes
+build_conv_LSTM_model.fltrs = 64
+build_conv_LSTM_model.kernel_size = 3
+build_conv_LSTM_model.LSTM_units = 128
+build_conv_LSTM_model.Dense_units = 128
+build_conv_LSTM_model.s2s = %s2s
+build_conv_LSTM_model.dropout_rate = 0.4
+
+#Transformer Model
+build_transformer_model.input_shape = %input_shape
+build_transformer_model.num_classes = %n_classes
+build_transformer_model.head_size =256
+build_transformer_model.num_heads =4
+build_transformer_model.ff_dim =4
+build_transformer_model.num_transformer_blocks = 4
+build_transformer_model.mlp_units = [128]
+build_transformer_model.dropout = 0.3
+build_transformer_model.mlp_dropout = 0.3
+
+################################################Training Parameters##################################################
+Trainer.model_save_dir = "/home/RUS_CIP/st176497/dl-lab-22w-team04/Human_Activity_Recognition/checkpoints/s2l/best_model/"
+Trainer.total_steps =  20000
+Trainer.log_interval = 200
+Trainer.ckpt_interval = 200
+Trainer.learning_rate = 0.001 ##Hyper_parameter
+Trainer.patience = 10
+
+################################################Visualization Parameters##################################################
+visualize_model.data_dir = %raw_data_dir
+visualize_model.train_users = %train_users
+visualize_model.test_users = %test_users
+visualize_model.val_users = %val_users
+visualize_model.Noisy_samples =%Noisy_samples
+visualize_model.exp_id =%exp_id
+visualize_model.window_size =%window_length
+visualize_model.stride =%sequence_stride
