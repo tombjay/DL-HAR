@@ -66,6 +66,6 @@ Ensemble | **96.3%** | **86.96%** | **0.89**
 
 ![Predicted](https://github.com/tombjay/DL-HAR/blob/main/Results/Visualization/Prediction_Visualization.png)
 
-For more detailed results kindly have a look in ['Results'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/tree/master/Human_Activity_Recognition/Results) folder.
+For more detailed results kindly have a look in ['Results'](https://github.com/tombjay/DL-HAR/tree/main/Results) folder.
 
 To view the statistics of our best run, kindly follow this [link](https://wandb.ai/team_4_dl/Human_Activity_recognition_Best_Runs?workspace=default)
