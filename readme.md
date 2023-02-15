@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ## How to run the code
 ### Step 1 - Configuring parameters
 
-The following parameters are to be set in the ['config.gin'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/Human_Activity_Recognition/configs/config.gin) file.
+The following parameters are to be set in the ['config.gin'](https://github.com/tombjay/DL-HAR/blob/main/configs/config.gin) file.
     
   - **raw_data_dir** - The path to unprocessed dataset (str)
   - __window_length__ & __sequence_stride__ - To provide window length and window stride for processing the dataset (int).
@@ -30,7 +30,7 @@ python3 main.py
 ```
 - By default, the functionality is to train the 'conv_LSTM' model.
 
-- To change functionality, the following flags are to be altered in ['main.py'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/Human_Activity_Recognition/main.py) file.
+- To change functionality, the following flags are to be altered in ['main.py'](https://github.com/tombjay/DL-HAR/blob/main/main.py) file.
   
   - __train__ - Specify whether to train or evaluate a model (bool).
   - __model_name__ - Specify the model to be trained. #LSTM, #GRU, #conv_LSTM (str).
@@ -42,7 +42,7 @@ python3 main.py
 
 Bayesian hyperparameter optimization is performed using the sweeps functionality in wandb. 
 
-  - Open the file ['hyper_parameter_train.py'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/Human_Activity_Recognition/hyper_parameter_train.py) and import the required model.
+  - Open the file ['hyper_parameter_train.py'](https://github.com/tombjay/DL-HAR/blob/main/hyper_parameter_train.py) and import the required model.
   - Modify the sweep configuration to include the required hyper parameters.
   - Run the file by executing the command,
 
@@ -62,9 +62,9 @@ Ensemble | **96.3%** | **86.96%** | **0.89**
 
 ### Visualization
 
-![Ground truth](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/Human_Activity_Recognition/Results/Visualization/GroundTruth_Visualization.png)
+![Ground truth](https://github.com/tombjay/DL-HAR/blob/main/Results/Visualization/GroundTruth_Visualization.png)
 
-![Predicted](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/blob/master/Human_Activity_Recognition/Results/Visualization/Prediction_Visualization.png)
+![Predicted](https://github.com/tombjay/DL-HAR/blob/main/Results/Visualization/Prediction_Visualization.png)
 
 For more detailed results kindly have a look in ['Results'](https://github.tik.uni-stuttgart.de/iss/dl-lab-22w-team04/tree/master/Human_Activity_Recognition/Results) folder.
 
